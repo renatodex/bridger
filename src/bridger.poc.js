@@ -32,9 +32,6 @@ var BridgeMethods = function(jQuery, buildArray) {
   var last = function(){
     return buildArray(this.jresult.last());
   };
-  var hasClass = function(class_name){
-    return buildArray(this.jresult.hasClass(class_name));
-  };
   var show = function(){
     return buildArray(this.jresult.show());
   };
@@ -42,13 +39,31 @@ var BridgeMethods = function(jQuery, buildArray) {
     return buildArray(this.jresult.hide());
   };
   var html = function(content){
-    return buildArray(this.jresult.html(content));
+    var _content = content || false;
+    if(_content) {
+      return buildArray(this.jresult.html(_content));
+    } else {
+      return this.jresult.html();
+    }
   };
   var text = function(content){
-    return buildArray(this.jresult.text(content));
+    var _content = content || false;
+    if(_content) {
+      return buildArray(this.jresult.text(_content));
+    } else {
+      return this.jresult.text();
+    }
   };
-  var val = function(new_value){
-    return buildArray(this.jresult.val(new_value));
+  var val = function(content){
+    var _content = content || false;
+    if(_content) {
+      return buildArray(this.jresult.val(_content));
+    } else {
+      return this.jresult.val();
+    }
+  };
+  var hasClass = function(class_name){
+    return buildArray(this.jresult.hasClass(class_name));
   };
 
   return {

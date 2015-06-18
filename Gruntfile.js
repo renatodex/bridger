@@ -8,7 +8,8 @@ module.exports = function(grunt) {
           specs: 'spec/*spec.js',
           helpers: 'spec/*helper.js',
           vendor: [
-            "bower_components/jquery/dist/jquery.js"
+            "bower_components/jquery/dist/jquery.js",
+            "bower_components/jasmine-jquery/lib/jasmine-jquery.js"
           ]
         }
       }
