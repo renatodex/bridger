@@ -148,5 +148,61 @@ describe('Bridger Tests', function() {
         expect(jQuery(collection).hasClass('teste')).toBe(true);
       });
     });
+
+    describe(".removeClass", function() {
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("body").removeClass('anyclass');
+        expect(typeof(collection.result)).toBe('object');
+      });
+
+      it("should remove class", function() {
+        var fixture = setFixtures('<div class="lompa teste"></div>')
+        var collection = bridger(".lompa").removeClass('teste');
+        expect(jQuery(collection).hasClass('teste')).toBe(false);
+        expect(jQuery(collection).hasClass('lompa')).toBe(true);
+      });
+    });
+
+    describe(".attr", function() {
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("body").attr('anyclass');
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".children", function() {
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("body").children();
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".css", function() {
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("body").css();
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".data", function() {
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("body").data();
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".each", function() {
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("body").each(function(){});
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".hasClass", function() {
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("body").hasClass('test');
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
   });
 });
