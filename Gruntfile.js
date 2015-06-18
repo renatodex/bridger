@@ -1,12 +1,17 @@
 module.exports = function(grunt) {
+
   grunt.initConfig({
-    jasmine : {
-      // Your project's source files
-      src : 'src/**/*.js',
-      // Your Jasmine spec files
-      specs : 'specs/**/*spec.js',
-      // Your spec helper files
-      helpers : 'specs/helpers/*.js'
+    jasmine: {
+      pivotal: {
+        src: 'src/**/*.js',
+        options: {
+          specs: 'spec/*spec.js',
+          helpers: 'spec/*helper.js',
+          vendor: [
+            "bower_components/jquery/dist/jquery.js"
+          ]
+        }
+      }
     }
   });
 
