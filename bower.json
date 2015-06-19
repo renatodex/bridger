@@ -1,0 +1,27 @@
+{
+  "name": "bridger",
+  "version": "1.0.0",
+  "homepage": "https://github.com/renatodex/bridger",
+  "authors": [
+    "Renato Alves <renatodex@gmail.com>"
+  ],
+  "description": "Agnostic DOM Manipulation Library wrapper",
+  "main": "dist/bridger.min.js",
+  "keywords": [
+    "agnostic",
+    "dom",
+    "wrapper"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jasmine-jquery": "~2.1.0",
+    "jquery": "~2.1.4"
+  }
+}
