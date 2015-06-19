@@ -1,9 +1,14 @@
-describe('Bridger Tests', function() {
+describe('Bridger Adapter jQuery', function() {
   describe("Array Like Constructor", function(){
     var bridger;
 
     beforeEach(function() {
-      bridger = new Bridge_jQuery(jQuery);
+      bridger = new Bridger_jQuery(jQuery);
+    })
+
+    it("should set jQuery adapter to body as data-bridger", function() {
+      expect(document.body.getAttribute('databridgerAdapter')).toEqual('jQuery');
+
     })
 
     it("make sure result is a CUSTOM array-like (not the jQuery one)",function() {
