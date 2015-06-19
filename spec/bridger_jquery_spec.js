@@ -222,5 +222,16 @@ describe('Bridger Tests', function() {
         expect(typeof(collection.result)).toBe('object');
       });
     });
+
+    describe("click", function(){});
+    describe("trigger", function(){});
+    describe("bind", function(){});
+    describe("before", function(){});
+    describe("after", function(){});
+    describe("append", function(){});
+    describe("prepend", function(){});
+    describe("appendTo", function(){});
+    describe("prependTo", function(){});
+
   });
 });
