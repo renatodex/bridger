@@ -6,7 +6,7 @@
     "Renato Alves <renatodex@gmail.com>"
   ],
   "description": "Agnostic DOM Manipulation Library wrapper",
-  "main": "dist/bridger.min.js",
+  "main": "dist/bridger.js",
   "keywords": [
     "agnostic",
     "dom",

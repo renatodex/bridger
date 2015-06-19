@@ -8,7 +8,7 @@ module.exports = function(grunt) {
           compress: true
         },
         files: {
-          'dist/bridger.min.js': 'src/bridger.js'
+          'dist/bridger.min.js': 'dist/bridger.js'
         }
       }
     },
@@ -24,14 +24,24 @@ module.exports = function(grunt) {
           ]
         }
       }
-    }
+    },
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['src/bridger.js', 'src/bridger_jQuery.js'],
+        dest: 'dist/bridger.js',
+      },
+    },
   });
 
   // Register tasks.
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Task defining.
   grunt.registerTask('default', 'jasmine');
-  grunt.registerTask('build', ['uglify']);
+  grunt.registerTask('build', ['concat', 'uglify']);
 };
