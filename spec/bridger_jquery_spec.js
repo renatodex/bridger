@@ -294,5 +294,18 @@ describe('Bridger Tests', function() {
         expect(typeof(collection.result)).toBe('object');
       });
     });
+
+    describe("parent", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        setFixtures("<div class='dad'><div class='son'></div></div>")
+        var collection = bridger(".son").parent();
+        expect(typeof(collection.result)).toBe('object');
+      });
+      it("should match parent element", function() {
+        setFixtures("<div class='dad'><div class='son'></div></div>")
+        var collection = bridger(".son").parent();
+        expect(collection.attr('class')).toEqual('dad');
+      });
+    });
   });
 });

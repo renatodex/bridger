@@ -113,6 +113,10 @@ var BridgeMethods = function(jQuery, buildArray) {
     return buildArray(this.jresult.prependTo(element));
   }
 
+  var parent = function(element) {
+    return buildArray(this.jresult.parent());
+  }
+
   return {
     $:$,
     addClass:addClass,
@@ -139,7 +143,8 @@ var BridgeMethods = function(jQuery, buildArray) {
     append:append,
     prepend:prepend,
     appendTo:appendTo,
-    prependTo:prependTo
+    prependTo:prependTo,
+    parent:parent
   }
 };
 
