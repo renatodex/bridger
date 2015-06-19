@@ -223,15 +223,76 @@ describe('Bridger Tests', function() {
       });
     });
 
-    describe("click", function(){});
-    describe("trigger", function(){});
-    describe("bind", function(){});
-    describe("before", function(){});
-    describe("after", function(){});
-    describe("append", function(){});
-    describe("prepend", function(){});
-    describe("appendTo", function(){});
-    describe("prependTo", function(){});
 
+
+    describe("click", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("body").click(function(){});
+        expect(typeof(collection.result)).toBe('object');
+      });
+      it("should call jQuery.click without params (even undefined) when user pass no params", function() {
+        var collection = bridger("<a/>").click();
+        expect(typeof(collection.result)).toBe('object');
+      })
+    });
+
+    describe("trigger", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("<a/>").trigger('click');
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe("bind", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("<a/>").bind('click', function(){});
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".before", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("<a/>").before(bridger("<a/>"));
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".after", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        var fixture = setFixtures('<div class="test"></div>')
+        var collection = bridger("<a/>").after(bridger(".test"));
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".append", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        var fixture = setFixtures('<div class="test"></div>')
+        var collection = bridger("<a/>").append(bridger(".test"));
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".prepend", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        var fixture = setFixtures('<div class="test"></div>')
+        var collection = bridger("<a/>").prepend($(".test"));
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe(".appendTo", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("<a/>").appendTo(bridger("body"));
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
+
+    describe("prependTo", function(){
+      it("chaining calls generate custom ArrayLike", function() {
+        var collection = bridger("<a/>").prependTo(bridger("body"));
+        expect(typeof(collection.result)).toBe('object');
+      });
+    });
   });
 });

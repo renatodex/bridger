@@ -17,7 +17,7 @@ module.exports = function(grunt) {
         src: 'src/**/*.js',
         options: {
           specs: 'spec/*spec.js',
-          helpers: 'spec/*helper.js',
+          // helpers: 'spec/*helper.js',
           vendor: [
             "bower_components/jquery/dist/jquery.js",
             "bower_components/jasmine-jquery/lib/jasmine-jquery.js"

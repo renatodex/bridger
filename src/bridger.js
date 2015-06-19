@@ -77,6 +77,41 @@ var BridgeMethods = function(jQuery, buildArray) {
   var hasClass = function(class_name){
     return buildArray(this.jresult.hasClass(class_name));
   };
+  var click = function(fn) {
+    if(fn === undefined) {
+      return buildArray(this.jresult.click());
+    } else {
+      return buildArray(this.jresult.click(fn));
+    }
+  }
+  var trigger = function(eventname) {
+    return buildArray(this.jresult.trigger(eventname));
+  }
+  var bind = function(eventname, fn) {
+    return buildArray(this.jresult.bind(eventname, fn));
+  }
+  var before = function(element) {
+    return buildArray(this.jresult.before(element));
+  }
+  var after = function(element) {
+    return buildArray(this.jresult.after(element));
+  }
+
+  var append = function(element) {
+    return buildArray(this.jresult.append(element));
+  }
+
+  var prepend = function(element) {
+    return buildArray(this.jresult.prepend(element));
+  }
+
+  var appendTo = function(element) {
+    return buildArray(this.jresult.appendTo(element));
+  }
+
+  var prependTo = function(element) {
+    return buildArray(this.jresult.prependTo(element));
+  }
 
   return {
     $:$,
@@ -96,6 +131,15 @@ var BridgeMethods = function(jQuery, buildArray) {
     html:html,
     text:text,
     val:val,
+    click:click,
+    trigger:trigger,
+    bind:bind,
+    before:before,
+    after:after,
+    append:append,
+    prepend:prepend,
+    appendTo:appendTo,
+    prependTo:prependTo
   }
 };
 
@@ -114,15 +158,15 @@ var Bridge_jQuery = function(jQuery) {
 
     for (var attrname in bridge_methods) { arraylike[attrname] = bridge_methods[attrname]; }
 
-    arraylike.result = arraylike;
-    arraylike.jresult = jQuery(arraylike);
+      arraylike.result = arraylike;
+      arraylike.jresult = jQuery(arraylike);
 
-    return arraylike;
+      return arraylike;
+    }
+
+    var bridge_methods = new BridgeMethods(jQuery, buildArray);
+
+    return function(element_name) {
+      return bridge_methods.$(element_name);
+    };
   }
-
-  var bridge_methods = new BridgeMethods(jQuery, buildArray);
-
-  return function(element_name) {
-    return bridge_methods.$(element_name);
-  };
-}
