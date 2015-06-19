@@ -165,9 +165,15 @@ describe('Bridger Tests', function() {
 
     describe(".attr", function() {
       it("chaining calls generate custom ArrayLike", function() {
-        var collection = bridger("body").attr('anyclass');
+        var collection = bridger("body").attr('anyclass',1);
         expect(typeof(collection.result)).toBe('object');
       });
+
+      it("should return non-object value when second param is not passed", function() {
+        $("body").attr("data-test", '1');
+        var collection = bridger("body").attr('data-test');
+        expect(collection).toEqual('1');
+      })
     });
 
     describe(".children", function() {
@@ -179,15 +185,27 @@ describe('Bridger Tests', function() {
 
     describe(".css", function() {
       it("chaining calls generate custom ArrayLike", function() {
-        var collection = bridger("body").css();
+        var collection = bridger("body").css('margin','10px');
         expect(typeof(collection.result)).toBe('object');
       });
+
+      it("should return non-object value when second param is not passed", function() {
+        $("body").css("background-color", "rgb(255, 255, 255)");
+        var collection = bridger("body").css('background-color');
+        expect(collection).toEqual("rgb(255, 255, 255)");
+      })
     });
 
     describe(".data", function() {
       it("chaining calls generate custom ArrayLike", function() {
-        var collection = bridger("body").data();
+        var collection = bridger("body").data('teste',1);
         expect(typeof(collection.result)).toBe('object');
+      });
+
+      it("should return non-object value when second param is not passed", function() {
+        $("body").attr("data-test", 1);
+        var collection = bridger("body").data('test');
+        expect(collection).toEqual(1);
       });
     });
 

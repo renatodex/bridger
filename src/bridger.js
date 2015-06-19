@@ -9,16 +9,28 @@ var BridgeMethods = function(jQuery, buildArray) {
     return buildArray(this.jresult.removeClass(class_name));
   };
   var attr = function(key, value){
-    return buildArray(this.jresult.attr(key, value));
+    if(value === undefined) {
+      return this.jresult.attr(key);
+    } else {
+      return buildArray(this.jresult.attr(key, value));
+    }
   };
   var children = function(){
     return buildArray(this.jresult.children());
   };
   var css = function(key, value){
-    return buildArray(this.jresult.css(key, value));
+    if(value === undefined) {
+      return this.jresult.css(key);
+    } else {
+      return buildArray(this.jresult.css(key,value));
+    }
   };
   var data = function(key, value){
-    return buildArray(this.jresult.data(key, value));
+    if(value === undefined) {
+      return this.jresult.data(key);
+    } else {
+      return buildArray(this.jresult.data(key,value));
+    }
   };
   var each = function(fn){
     return buildArray(this.jresult.each(fn));
