@@ -1,6 +1,6 @@
 {
   "name": "bridger",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A wrapper to DML vendores",
   "main": "Gruntfile.js",
   "directories": {
