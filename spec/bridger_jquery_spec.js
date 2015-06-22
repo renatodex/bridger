@@ -8,7 +8,10 @@ describe('Bridger Adapter jQuery', function() {
 
     it("should set jQuery adapter to body as data-bridger", function() {
       expect(document.body.getAttribute('databridgerAdapter')).toEqual('jQuery');
+    })
 
+    it("should return adapter", function() {
+      expect(bridger.adapter()).toBe("jQuery");
     })
 
     it("make sure result is a CUSTOM array-like (not the jQuery one)",function() {

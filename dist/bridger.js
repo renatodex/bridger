@@ -1,18 +1,27 @@
 (function(window, document, undefined) {
   var Bridger = function(){
 
-    var autoload = function() {
+    var adapter = function() {
         return document.body.getAttribute('databridgerAdapter');
     }
 
+    var autoload = function() {
+      var adapter_name = document.body.getAttribute('databridgerAdapter');
+      var adapter_class = ["Bridger_", adapter_name].join('');
+      return new window[adapter_class];
+    }
+
     return {
+      adapter:adapter,
       autoload:autoload
     }
   }
 
   window.Bridger = new Bridger();
 })(this, this.document);
-;(function(window, document, undefined) {
+;(function(window, document, jQuery, undefined) {
+  var Adapter = "jQuery";
+
   var Bridger_jQuery_Methods = function(jQuery, buildArray) {
     var $ = function(elementName){
       return buildArray(jQuery(elementName));
@@ -163,7 +172,7 @@
     }
   };
 
-  var Bridger_jQuery = function Bridger_jQuery(jQuery) {
+  var Bridger_jQuery = function() {
 
     var buildArray = function(result) {
       var real_array = jQuery.makeArray(result);
@@ -183,23 +192,32 @@
       return arraylike;
     }
 
-    var bridge_methods = new window[this.constructor.name + "_Methods"](jQuery, buildArray);
+    var bridge_methods = new Bridger_jQuery_Methods(jQuery, buildArray);
 
-    var initializer = function(element_name) {
+    var initializer = function Bridger_jQuery_Initializer(element_name) {
       return bridge_methods.$(element_name);
     };
 
+    initializer.adapter = function() {
+      return Adapter;
+    }
+
     initializer.setup = function() {
-      document.body.setAttribute('databridgerAdapter', 'jQuery');
+      document.body.setAttribute('databridgerAdapter', this.adapter());
     }
 
     initializer.setup();
 
     return initializer;
-
   }
 
   window.Bridger_jQuery = Bridger_jQuery;
   window.Bridger_jQuery_Methods = Bridger_jQuery_Methods;
   window.Bridger = Bridger;
-})(this, this.document);
+
+  if(document.body == null) {
+    throw "Bridger cannot be declared at <HEAD>. Please, move it to body";
+  } else{
+    document.body.setAttribute('databridgerAdapter', Adapter);
+  }
+})(this, this.document, jQuery);
