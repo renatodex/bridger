@@ -7,4 +7,8 @@ describe('Bridger Core', function() {
   it("should auto instantiate loaded adapter", function() {
     expect(Bridger.autoload().adapter()).toEqual("jQuery");
   });
+
+  it("should instantiate when passing adapter", function() {
+    expect(Bridger.autoload('jQuery').adapter()).toEqual("jQuery");
+  })
 });
